@@ -1,0 +1,12 @@
+  <% @post.each do |post| %>
+   <%   @comment = post.comments %>
+      <h2><%= post.name %></h2>
+     <% @comment.each do |comment| %>
+
+          <p><%= comment.commenter %></p>
+         <p> <%= comment.body.html_safe %>            </p>
+
+
+      <%end %>
+
+  <% end %>

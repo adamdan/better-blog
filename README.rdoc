@@ -1,0 +1,72 @@
+Better-Blog
+====================
+This is an improvement over my simple blog.
+* RESTful user authentication
+* Multiple users, multiple blogs, anonymous comments,
+* WYSIWYG editor for editing and commenting.
+* Tags for Posts
+* Recently Added Posts displayed on the side.   Users most recent post/blogpost is displayed.  Everything is truncated.
+* Truncated Posts obviously include html and appropriate closing tags.   Images are included and scaled.
+* Simple, easy to read layout for displaying posts, users, comments, logging in/out.   It scales to mobile/tablet.
+* It's a blog!  So no extra CMS features.   Easy to post, easy to read, easy to navigate.
+* Other additional features:  ability to embed youtube videos, audio, etc in posts.
+
+
+Updates
+------------
+11/23
+* Initial Commit
+
+
+
+Installation
+---------------------
+* download it, unzip it, and you should probably run:
+* bundle install
+* rake db:migrate
+
+precompile assets
+* bundle exec rake assets:precompile
+
+change the config/applications.rb file to production and ensure this is all correct:
+* config.assets.compile = true
+
+in config/enviornments/production.rb
+''''''''
+# Compress JavaScripts and CSS
+config.assets.compress = true
+ 
+# Choose the compressors to use
+# config.assets.js_compressor  = :uglifier
+# config.assets.css_compressor = :yui
+ 
+# Don't fallback to assets pipeline if a precompiled asset is missed
+config.assets.compile = false
+ 
+# Generate digests for assets URLs.
+config.assets.digest = true
+ 
+# Defaults to Rails.root.join("public/assets")
+# config.assets.manifest = YOUR_PATH
+ 
+# Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+# config.assets.precompile += %w( search.js )
+''''
+
+See _http://guides.rubyonrails.org/asset_pipeline.html_
+
+__if you are getting an asset precompile error when running "_bundle exec rake assets:precompile_" you will have to configure the asset pipeline as:__
+*  config.assets.compile = false
+
+
+This leads me into:
+
+Current Bugs
+------------------
+* Twitter Bootstrap gem needs to be updated or reconfigured to compile correctly (this is due to an error in the CSS of bootstrap that works with SASS.
+* Current editor will strip certain html tags.   Including a <div> inside the post will cause the main index page to completely fail.   This is because it is truncating html and including closing tags.    The actual full post itself will not cause the application to fail, so the problem can be fixed by deleting and rewriting the post.   What is displayed in the editor is not the actual html being inserted.
+
+
+
+
+

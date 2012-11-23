@@ -1,0 +1,18 @@
+<div class="comment-space">
+<li>
+<p><%= comment.commenter %> commented:</p>
+
+  <ul><%= comment.body.html_safe %></ul>
+
+<p>
+  <br>
+  <% if logged_in? %>
+     <% if current_user.id = @post.user_id %>
+          <%= link_to 'Delete Comment', [comment.post, comment],
+                      :confirm => 'Are you sure?',
+                      :method => :delete %>
+              <% end %>
+      <% end %>
+</p>
+</li>
+</div>

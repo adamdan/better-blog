@@ -1,0 +1,6 @@
+<% @user.each do |user| %>
+    <%= user.username %>
+    <%= link_to "View Blog", my_user_path_path(user.username) %>
+
+    <br>
+<% end %>

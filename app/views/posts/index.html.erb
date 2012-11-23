@@ -1,0 +1,21 @@
+<% if ( current_user.posts ) %>
+<% current_user.posts.reverse.each do |post| %>
+    <div class="post-full multi-post">
+        <div class="post-title"><h4><%= link_to post.title, post %></h4></div>
+        <div>
+          <p> <%= time_ago_in_words(post.created_at) %> ago</p>
+          <% a = truncate_html(post.content.html_safe, :length => 420) %>
+          <%= a.html_safe %>
+
+        </div>
+
+      <div class="admin-controls">
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      </div>
+<% end %>
+
+<div class="paddingtop" style="padding-top:80px;"></div>
+                                        <% end %>
+<%= link_to 'New Post', new_post_path %>

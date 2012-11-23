@@ -1,0 +1,17 @@
+<h4>Posts by <%= @myuser.username %> </h4>
+<% if ( @myuser.posts ) %>
+    <% @myuser.posts.reverse.each do |post| %>
+        <div class="post-full multi-post">
+          <div class="post-title"><h4><%= link_to  post.title, my_user_post_id_path(@myuser.username, post.id) %></h4></div>
+          <div>
+            <p> <%= time_ago_in_words(post.created_at) %> ago</p>
+            <% a = truncate_html(post.content.html_safe, :length => 420) %>
+            <%= a.html_safe %>
+          </div>
+
+
+        </div>
+    <% end %>
+
+    <div class="paddingtop" style="padding-top:80px;"></div>
+<% end %>

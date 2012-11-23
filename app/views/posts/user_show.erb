@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+
+<h2>  <%= @post.title %></h2>
+<p> <%= time_ago_in_words(@post.created_at) %> ago</p>
+
+<div class="post-full">
+  <%=  @post.content.html_safe %>
+</div>
+
+<p>
+  <%= @post.name %>
+</p>
+<p>
+  <b>Tags:</b>
+  <% # join_tags(@post) %>
+</p>
+
+<h6>Comments</h6>
+<div id="comment_list">
+  <ul>
+    <%= render @post.comments %>
+  </ul>
+  <h2>Add a comment:</h2>
+  <%= render "comments/form" %>
+</div>

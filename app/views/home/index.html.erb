@@ -1,0 +1,22 @@
+<h4>Welcome <em><%= current_user.username %></em> </h4>
+<div class="welcome-user user-blog">
+<% if @last_post  %>
+      <h5><%= @last_post.title %></h5>
+    <div><%= truncate_html(@last_post.content, :length => 105).html_safe %></div>
+      <% end %>
+    <p><%= link_to "My Blog", posts_path %></p>
+</div>
+
+
+<div class="blogs">
+<h4>Some User Blogs</h4>
+<%  @users = User.all%>
+<% @users.each do |user| %>
+      <div class="user-blog">
+          <% @myuser = user %>
+
+        <p>  <%= user.username %>'s Blog           </p>
+        <p> <%= link_to "View", my_user_path_path(user.username) %> </p>
+      </div>
+<% end %>
+</div>
